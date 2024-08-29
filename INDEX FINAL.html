@@ -7,7 +7,6 @@
     <title>Editor Front End -Prof°Igor Mth </title>
     <style>
         body {
-
             display: flex;
             flex-direction: column;
             margin: 0;
@@ -48,13 +47,13 @@
             box-sizing: border-box;
         }
 
-        .botoesDeAcao{
+        .botoesDeAcao {
             display: flex;
-            gap:2%;
+            gap: 2%;
         }
 
-        .Prof-Igor-mth{
-            gap:0px;
+        .Prof-Igor-mth {
+            gap: 0px;
         }
 
         .output {
@@ -71,7 +70,8 @@
         }
 
         textarea {
-            width: 98%; /*largura da area de inserir codigo <!--Pr0f Ig0r Mth-->*/
+            width: 98%;
+            /*largura da area de inserir codigo <!--Pr0f Ig0r Mth-->*/
             height: 300px;
             background-color: #f5f5f5;
             color: #333;
@@ -84,23 +84,27 @@
         button {
             margin: 6px;
             padding: 10px;
-            cursor: pointer; /* alterar cursor */
+            cursor: pointer;
+            /* alterar cursor */
             background-color: #007bff;
             color: white;
             font-weight: 700;
             border: none;
             border-radius: 50px;
         }
-        .Prof-Igor-mth:hover{
-            gap:0px;
+
+        .Prof-Igor-mth:hover {
+            gap: 0px;
         }
 
         button:hover {
             /* Efeito de passar mouse ele muda cor */
             background-color: #00ff08;
             color: rgb(0, 0, 0);
-            letter-spacing: 0px; /* espaço entre letras */
-            font-weight: 800; /* preenchimento da letra  <!--Pr0f Ig0r Mth-->*/
+            letter-spacing: 0px;
+            /* espaço entre letras */
+            font-weight: 800;
+            /* preenchimento da letra  <!--Pr0f Ig0r Mth-->*/
         }
 
         .night-mode {
@@ -124,7 +128,8 @@
             font-weight: none;
             text-decoration: none;
             font-family: Comic Sans MS, Comic Sans, cursive, arial;
-            font-variant: small-caps;/*fonte em letra de forma <!--Pr0f Ig0r Mth--> */
+            font-variant: small-caps;
+            /*fonte em letra de forma <!--Pr0f Ig0r Mth--> */
             font-size: 35px;
             color: #ffffff;
         }
@@ -135,7 +140,6 @@
             margin: 5px;
             align-items: center;
             justify-content: center;
-
         }
     </style>
 </head>
@@ -202,7 +206,8 @@
             <textarea id="codeArea" placeholder="Escreva seu código aqui"></textarea> <!--Are para inserir o codigo-->
 
             <div class="botoesDeAcao">
-                
+                <input type="file" id="importFile" accept=".html" onchange="importCode()" />
+                <br>
                 <button onclick="executeCode()">Executar Código</button>
                 <br>
                 <button onclick="toggleNightMode()">Modo Noturno</button>
@@ -221,7 +226,7 @@
 
     <script>
         let isNightMode = false;
-        let isVerticalOrientation = false;//<!--Pr0f Ig0r Mth-->
+        let isVerticalOrientation = false; //<!--Pr0f Ig0r Mth-->
 
         function insertTag(tag) {
             const textarea = document.getElementById('codeArea');
@@ -239,7 +244,7 @@
                 resultFrame.contentDocument.body.style.color = '#fff';
             } else {
                 resultFrame.contentDocument.body.style.backgroundColor = 'white';
-                resultFrame.contentDocument.body.style.color = '#000';//<!--Pr0f Ig0r Mth-->
+                resultFrame.contentDocument.body.style.color = '#000'; //<!--Pr0f Ig0r Mth-->
             }
         }
 
@@ -289,7 +294,22 @@
             link.download = "Aula Prof Igor Math - Codigo.html";
             link.click();
         }
+
+        function importCode() {
+            const fileInput = document.getElementById('importFile');
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const content = e.target.result;
+                document.getElementById('codeArea').value = content;
+                executeCode();
+            };
+
+            reader.readAsText(file);
+        }
     </script>
 </body>
 <!--Prof Igor Mth-->
+
 </html>
